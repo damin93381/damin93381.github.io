@@ -13,7 +13,7 @@
 
 
 
-<title>test | Hexo</title>
+<title>multiwfn+cp2k分析大体系LDOS考察其输运性质 | Hexo</title>
 
 
 
@@ -127,11 +127,76 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    var tocbot_timer;
+    var DEPTH_MAX = 6; // 为 6 时展开所有
+    var tocbot_default_config = {
+        tocSelector: '.tocbot-list',
+        contentSelector: '.post-content',
+        headingSelector: 'h1, h2, h3, h4, h5',
+        orderedList: false,
+        scrollSmooth: true,
+        onClick: extend_click,
+    };
+
+    function extend_click() {
+        clearTimeout(tocbot_timer);
+        tocbot_timer = setTimeout(function() {
+            tocbot.refresh(obj_merge(tocbot_default_config, {
+                hasInnerContainers: true
+            }));
+        }, 420); // 这个值是由 tocbot 源码里定义的 scrollSmoothDuration 得来的
+    }
+
+    document.ready(function() {
+        tocbot.init(obj_merge(tocbot_default_config, {
+            collapseDepth: 1
+        }));
+    });
+
+    function expand_toc() {
+        var b = document.querySelector('.tocbot-toc-expand');
+        var expanded = b.getAttribute('data-expanded');
+        expanded ? b.removeAttribute('data-expanded') : b.setAttribute('data-expanded', true);
+        tocbot.refresh(obj_merge(tocbot_default_config, {
+            collapseDepth: expanded ? 1 : DEPTH_MAX
+        }));
+        b.innerText = expanded ? 'Expand all' : 'Collapse all';
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function obj_merge(target, source) {
+        for (var item in source) {
+            if (source.hasOwnProperty(item)) {
+                target[item] = source[item];
+            }
+        }
+        return target;
+    }
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">test</h1>
+            <h1 class="post-title">multiwfn+cp2k分析大体系LDOS考察其输运性质</h1>
             
                 <div class="post-meta">
                     
@@ -140,23 +205,18 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">July 24, 2024&nbsp;&nbsp;22:04:33</a>
+                        Date: <a href="#">August 29, 2024&nbsp;&nbsp;14:41:57</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/test/">test</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0 前言"></a>0 前言</h1><p>态密度（Density Of States，DOS），是第一性原理考察周期性体系电子结构的重要性质，这里对于态密度相关基础理论不再赘述，可以参照卢天博士的博文<a target="_blank" rel="noopener" href="http://sobereva.com/482">《使用Multiwfn绘制态密度(DOS)图考察电子结构》</a>,内有关于使用multiwfn绘制DOS图的具体介绍。同时，由于cp2k在计算大体系（300+原子体系）时，较其他第一性原理程序快的多得多的巨大优势，使得其与multiwfn结合去考察大体系电子结构性质成为可能。<br>    例如比较钙钛矿氧化锡与碘化铅层间加入不同钝化剂后体系的态密度分析输运性质，这里我引用我参与的一项工作为例<a target="_blank" rel="noopener" href="https://doi.org/10.1039/D4EE01552E">《Organic emitters with near-unity photoluminescence to reinforce buried interface of perovskite solar cells and modules》</a><br>    完成建模后体系达数百原子，使用VASP等传统平面波基组程序速度极慢，而使用cp2k可以在24小时内完成足够合理的结构优化，甚至可以使用杂化泛函对于优化后结构进行单点计算并成功收敛。这证明了使用multiwfn+cp2k研究大体系电子结构的可行性。<br>    以下介绍怎样使用上文中提到的LDOS（Local Density Of States）方法分析大体系输运性质。</p>
+<h1 id="1-核心思想"><a href="#1-核心思想" class="headerlink" title="1 核心思想"></a>1 核心思想</h1><p>使用multiwfn我们可以绘制盒子内某条线段上的LDOS填色图<br><img src="/re/ldos.png" alt="pic"></p>
+
         </div>
 
         
@@ -170,7 +230,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2024/07/24/test/">http://example.com/2024/07/24/test/</a></span>
+                        <span><a href="http://example.com/2024/08/29/letter1/">http://example.com/2024/08/29/letter1/</a></span>
                     </p>
                 
                 
@@ -203,10 +263,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2024/08/29/letter1/">multiwfn+cp2k分析大体系LDOS考察其输运性质</a>
             
-            
-            <a class="next" rel="next" href="/2024/07/21/hello-world/">测试</a>
+            <a class="next" rel="next" href="/2024/07/24/test/">test</a>
             
         </section>
 
