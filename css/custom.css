@@ -1,0 +1,15 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "SimHei", sans-serif; /* 各级标题使用黑体 */
+}
+/* 正文中的英文使用 Times New Roman */
+body {
+  font-family: "SimSun", serif;
+}
+body *:lang(en) {
+  font-family: "Times New Roman", serif;
+}
