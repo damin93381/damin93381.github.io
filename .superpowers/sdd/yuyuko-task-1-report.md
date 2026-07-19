@@ -41,3 +41,19 @@ Because no eligible image download completed, `file
 assets/yuyuko-local-preview-source/*-original` has no files to inspect. The
 README retains the required validation command for a user-performed browser
 download. The existing preview server on port 4000 was not stopped or changed.
+
+## User-provided staging evidence (2026-07-20)
+
+The user subsequently provided the four selected originals on the local
+Desktop. Exact byte-for-byte copies were staged without filename extensions;
+the Desktop sources were not modified and the ignored originals were not added
+to Git.
+
+| Staging filename | Source file | `file` identification | SHA-256 |
+| --- | --- | --- | --- |
+| `banner-original` | `127200026_p0.jpg` | JPEG, 4808 x 2074 | `a50ba48722f8348d54c9cb990633c91cb1486ba01665d780af0b73d8fff522c5` |
+| `avatar-original` | `西行寺幽幽子（绯想天立绘）.png` | PNG, 444 x 480 | `214f09ffc771786dcf62a497c961ec0d41d000c354721b190f3aa139b5a7eab2` |
+| `cover-original` | `008.jpg` | JPEG, 1920 x 1080 | `8eb9b9006d6b6870fa16ac019cb6e412648d4ef2947ffcbca3bf8324a585a3b8` |
+| `404-original` | `Konachan.com - 358002 butterfly cherry_blossoms dress flowers hat japanese_clothes petals pink_eyes pink_hair saigyouji_yuyuko short_hair touhou umbrella.png` | PNG, 2550 x 1100 | `1c6107d7c8914f85eeba7079a1e5a649a14f346971d3997a536e42337afec667` |
+
+Each staged digest equals its corresponding Desktop source digest.
