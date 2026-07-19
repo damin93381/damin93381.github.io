@@ -33,6 +33,8 @@ banner_srcset:
   enable: true
   srcset:
     - src: "/images/yuyuko-banner-mobile.webp"
+      media: "(max-width: 479px)"
+    - src: "/images/yuyuko-banner-mobile.webp"
       media: "(max-width: 799px)"
     - src: "/images/yuyuko-banner.webp"
       media: "(min-width: 800px)"
@@ -68,7 +70,7 @@ open_graph:
     #google_plus: <g+:profile_link>
     #fb_admins: <fb:admin_id>
     #fb_app_id: <fb:app_id>
-    default_og_image: /images/banner.webp # the default og:image for Open Graph, support absolute path
+    default_og_image: /images/yuyuko-banner.webp # the default og:image for Open Graph, support absolute path
 
 # Content
 excerpt_link: Read More

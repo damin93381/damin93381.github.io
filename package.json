@@ -11,8 +11,9 @@
     "clean": "hexo clean",
     "deploy": "hexo deploy",
     "server": "hexo server",
-    "test": "npm run clean && npm run build && npm run verify:taxonomy",
-    "verify:taxonomy": "node test/verify-taxonomy.js"
+    "test": "npm run clean && npm run build && npm run verify:taxonomy && npm run verify:yuyuko-local-preview",
+    "verify:taxonomy": "node test/verify-taxonomy.js",
+    "verify:yuyuko-local-preview": "node test/verify-yuyuko-local-preview-assets.mjs"
   },
   "hexo": {
     "version": "8.1.2"
