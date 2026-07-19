@@ -45,6 +45,20 @@ for (const source of [
   );
 }
 
+const cardCoverSources = [...homepage.matchAll(
+  /<div class="post-cover[^>]*>\s*<img data-src="([^"]+)"/g,
+)].map((match) => match[1]);
+assert.equal(cardCoverSources.length, 3, "homepage must render all starter post covers");
+assert.ok(
+  cardCoverSources.every((source) => source === "/covers/yuyuko-cover.webp"),
+  "homepage cards must consistently use the selected local Yuyuko cover",
+);
+assert.doesNotMatch(
+  homepage,
+  /d-sketon\.top\/img\/_backwebp\/bg1\.webp/,
+  "homepage must not retain Reimu's remote random-cover entry",
+);
+
 for (const [media, source] of [
   ["(max-width: 479px)", "/images/yuyuko-banner-mobile.webp"],
   ["(max-width: 799px)", "/images/yuyuko-banner-mobile.webp"],
@@ -63,3 +77,15 @@ for (const path of htmlFiles) {
     `${path} must not reference Reimu's default banner`,
   );
 }
+
+const notFoundPage = readFileSync("public/404.html", "utf8");
+assert.match(
+  notFoundPage,
+  /<img\s+fetchpriority="high"\s+src="\/images\/reimu\.png"\s+alt="">/,
+  "404 must use the selected dedicated local artwork",
+);
+assert.doesNotMatch(
+  notFoundPage,
+  /<source media="[^"]+" srcset="\/images\/yuyuko-banner(?:-mobile)?\.webp">/,
+  "404 header must not fall back to the global banner source set",
+);
