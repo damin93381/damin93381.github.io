@@ -8,34 +8,21 @@ theme_config_check: true
 menu:
   - name: home
     url: /
-    icon: # default use taichi icon, you can use a hexadecimal representation of fontawesome or icon_font, like 'f0c1'
-  - name: archives
-    url: /archives
-    icon:
+    icon: f015
   - name: about
     url: /about
-    icon:
-  - name: friend
-    url: /friend
-    icon:
+    icon: f007
+  - name: categories
+    url: /categories
+    icon: f802
+  - name: tags
+    url: /tags
+    icon: f02c
+  - name: archives
+    url: /archives
+    icon: f49e
 
-subtitle:
-  typing:
-    enable: false
-    strings:
-      # - Sentence 1
-      # - Sentence 2
-      # - Sentence 3
-      # - Sentence 4
-    typeSpeed: 100              # typing speed (milliseconds/character)
-    backSpeed: 50               # backspacing speed (milliseconds/character)
-    backDelay: 2000             # time before backspacing (milliseconds)
-    startDelay: 300             # time before typing starts (milliseconds)
-    loop: true                  # loop through the strings
-    shuffle: true               # randomize the order of strings
-    showCursor: true            # show the typing cursor
-    cursorChar: "|"             # character for cursor
-    smartBackspace: false       # only backspace what doesn't match the previous string
+subtitle: 计算化学、材料科学与日常记录
 
 banner: "/images/banner.webp" # which means themes/reimu/source/images/banner.webp
 # You can also write it in the form of the following url
@@ -56,7 +43,7 @@ favicon: "/images/favicon.ico" # which means themes/reimu/source/images/favicon.
 # You can also write it in the form of the following url
 # favicon: "https://example.com"
 
-avatar: "avatar.webp" # which means source/_data/avatar/avatar.webp
+avatar: false
 
 # Control the display of the post cover
 # If not set, the banner image will be displayed by default
@@ -121,7 +108,7 @@ sidebar:
 
 social:
   # email: mailto:xxx@gmail.com
-  # github: https://github.com/yourname
+  github: https://github.com/damin93381
   # google: https://plus.google.com/yourname
   # twitter: https://twitter.com/yourname
   # bluesky: https://bsky.app/profile/yourname
