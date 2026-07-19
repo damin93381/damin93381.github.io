@@ -24,31 +24,29 @@ menu:
 
 subtitle: 计算化学、材料科学与日常记录
 
-banner: "/images/banner.webp" # which means themes/reimu/source/images/banner.webp
+banner: "/images/yuyuko-banner.webp"
 # You can also write it in the form of the following url
 # banner: "https://example.com"
 
 # If you want to use the srcset attribute, please enable it
 banner_srcset:
-  enable: false
+  enable: true
   srcset:
-    - src: "/images/banner-600w.webp"
-      media: "(max-width: 479px)"
-    - src: "/images/banner-800w.webp"
+    - src: "/images/yuyuko-banner-mobile.webp"
       media: "(max-width: 799px)"
-    - src: "/images/banner.webp"
+    - src: "/images/yuyuko-banner.webp"
       media: "(min-width: 800px)"
 
 favicon: "/images/favicon.ico" # which means themes/reimu/source/images/favicon.ico
 # You can also write it in the form of the following url
 # favicon: "https://example.com"
 
-avatar: "avatar.webp"
+avatar: "yuyuko-avatar.webp"
 
 # Control the display of the post cover
 # If not set, the banner image will be displayed by default
 # Its priority is lower than the cover in the Front-matter
-cover: # https://example.com / false / rgb(255,117,117)
+cover: "/covers/yuyuko-cover.webp"
 
 # Control the display of the post toc
 # Its priority is lower than the toc in the Front-matter

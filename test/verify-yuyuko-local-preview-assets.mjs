@@ -11,6 +11,12 @@ for (const filename of [
 ]) assert.match(manifest, new RegExp(filename));
 assert.match(manifest, /公开发布前需取得许可或替换/);
 
+const config = readFileSync("_config.reimu.yml", "utf8");
+assert.match(config, /banner: "\/images\/yuyuko-banner\.webp"/);
+assert.match(config, /yuyuko-banner-mobile\.webp/);
+assert.match(config, /avatar: "yuyuko-avatar\.webp"/);
+assert.match(config, /cover: "\/covers\/yuyuko-cover\.webp"/);
+
 const expectedDimensions = new Map([
   ["source/images/yuyuko-banner.webp", [2560, 1200]],
   ["source/images/yuyuko-banner-mobile.webp", [1440, 1080]],
