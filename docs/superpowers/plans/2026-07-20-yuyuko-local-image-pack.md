@@ -273,14 +273,14 @@ Expected: tests pass; `_config.yml` retains `deploy: type: ''`; no workflow dire
 - [ ] **Step 2: Start a temporary server with guaranteed cleanup**
 
 ~~~bash
-PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH npx hexo server > /tmp/yuyuko-preview.log 2>&1 &
+PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH npx hexo server -p 4001 > /tmp/yuyuko-preview.log 2>&1 &
 server_pid=$!
 trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 for attempt in 1 2 3 4 5 6 7 8 9 10; do
-  curl --fail --silent http://127.0.0.1:4000/ > /tmp/yuyuko-home.html && break
+  curl --fail --silent http://127.0.0.1:4001/ > /tmp/yuyuko-home.html && break
   sleep 1
 done
-curl --fail --silent http://127.0.0.1:4000/404.html > /tmp/yuyuko-404.html
+curl --fail --silent http://127.0.0.1:4001/404.html > /tmp/yuyuko-404.html
 ~~~
 
 - [ ] **Step 3: Verify generated image references**
@@ -315,4 +315,3 @@ git diff --check
 - Spec coverage: the plan records the four selected sources, creates fixed-dimension local derivatives, preserves small icons, enables same-source responsive banners, verifies generated output, and forbids publication.
 - Placeholder scan: each asset role has an explicit source page, staging filename, output filename, dimension, and verification command.
 - Consistency: Task 2 produces every path consumed by Task 3; Task 4 verifies those same paths.
-
