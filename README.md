@@ -5,14 +5,16 @@
 
 Template for [hexo-theme-reimu](https://github.com/D-Sketon/hexo-theme-reimu)
 
-## Usage
+## Local preview
 
 ```bash
-git clone https://github.com/D-Sketon/reimu-template
-cd reimu-template
 npm install
+npm run clean
+npm run build
 npm run server
 ```
+
+Open <http://127.0.0.1:4000/> for the home page or <http://127.0.0.1:4000/about/> for the about page. Stop the preview server with `Ctrl+C`.
 
 ## Features
 
