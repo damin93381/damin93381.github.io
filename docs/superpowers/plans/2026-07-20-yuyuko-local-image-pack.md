@@ -273,14 +273,14 @@ Expected: tests pass; `_config.yml` retains `deploy: type: ''`; no workflow dire
 - [ ] **Step 2: Start a temporary server with guaranteed cleanup**
 
 ~~~bash
-PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH npx hexo server -p 4001 > /tmp/yuyuko-preview.log 2>&1 &
+PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH npx hexo server -p 4100 > /tmp/yuyuko-preview.log 2>&1 &
 server_pid=$!
 trap 'kill "$server_pid" 2>/dev/null || true' EXIT
 for attempt in 1 2 3 4 5 6 7 8 9 10; do
-  curl --fail --silent http://127.0.0.1:4001/ > /tmp/yuyuko-home.html && break
+  curl --fail --silent http://127.0.0.1:4100/ > /tmp/yuyuko-home.html && break
   sleep 1
 done
-curl --fail --silent http://127.0.0.1:4001/404.html > /tmp/yuyuko-404.html
+curl --fail --silent http://127.0.0.1:4100/404.html > /tmp/yuyuko-404.html
 ~~~
 
 - [ ] **Step 3: Verify generated image references**
