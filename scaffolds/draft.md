@@ -6,6 +6,6 @@ cover:
 sticky: false
 comments:
 mermaid: false
-copyright: 
+copyright:
 sponsor:
 ---
