@@ -174,6 +174,54 @@ for (const filename of ["yuyuko-balance.svg", "yuyuko-sakura-balance.svg"]) {
   assert.match(sourceSvg, /stroke="#fff" stroke-width="5"/);
 }
 
+const blossomGroups = [
+  ["100 59", "#8d73ce"],
+  ["100 141", "#79d3ef"],
+];
+for (const path of [
+  "source/images/yuyuko-sakura-balance.svg",
+  "public/images/yuyuko-sakura-balance.svg",
+]) {
+  const sakuraSvg = readFileSync(path, "utf8");
+  assert.equal(
+    (sakuraSvg.match(/<g transform="translate\(100 (?:59|141)\)" fill="#fff">/g) ?? []).length,
+    2,
+    `${path} must contain exactly two blossom groups`,
+  );
+  for (const [center, color] of blossomGroups) {
+    assert.match(
+      sakuraSvg,
+      new RegExp(
+        `<g transform="translate\\(${center}\\)" fill="#fff">\\s*`
+        + `<use href="#petal"\\/><use href="#petal" transform="rotate\\(72\\)"\\/>`
+        + `<use href="#petal" transform="rotate\\(144\\)"\\/><use href="#petal" transform="rotate\\(216\\)"\\/>`
+        + `<use href="#petal" transform="rotate\\(288\\)"\\/>\\s*<circle r="7" fill="${color}"\\/>\\s*<\\/g>`,
+      ),
+      `${path} must contain a five-petal blossom centered at ${center} with center ${color}`,
+    );
+  }
+}
+
 const balanceSvg = readFileSync("source/images/yuyuko-balance.svg", "utf8");
 assert.match(balanceSvg, /<circle cx="100" cy="59" r="15" fill="url\(#violet\)"\/>/);
 assert.match(balanceSvg, /<circle cx="100" cy="141" r="15" fill="url\(#sky\)"\/>/);
+
+const { data: balancePixels, info: balanceInfo } = await sharp(Buffer.from(balanceSvg))
+  .ensureAlpha()
+  .raw()
+  .toBuffer({ resolveWithObject: true });
+const pixelAt = (x, y) => balancePixels.subarray(
+  (y * balanceInfo.width + x) * balanceInfo.channels,
+  (y * balanceInfo.width + x + 1) * balanceInfo.channels,
+);
+const rgbDistance = (first, second) => Math.hypot(
+  first[0] - second[0],
+  first[1] - second[1],
+  first[2] - second[2],
+);
+for (const [eye, lobe] of [[[100, 59], [117, 59]], [[100, 141], [117, 141]]]) {
+  assert.ok(
+    rgbDistance(pixelAt(...eye), pixelAt(...lobe)) > 70,
+    `eye at ${eye.join(",")} must visibly contrast with its adjacent lobe`,
+  );
+}
