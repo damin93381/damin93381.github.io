@@ -117,3 +117,13 @@ assert.doesNotMatch(
   /<source media="[^"]+" srcset="\/images\/yuyuko-banner(?:-mobile)?\.webp">/,
   "404 header must not fall back to the global banner source set",
 );
+
+const style = readFileSync("public/css/style.css", "utf8");
+for (const path of [
+  "../images/yuyuko-balance.svg",
+  "../images/yuyuko-sakura-balance.svg",
+  "../images/cursor/yuyuko-default.cur",
+  "../images/cursor/yuyuko-pointer.cur",
+]) {
+  assert.ok(style.includes(path), `generated CSS must reference ${path}`);
+}

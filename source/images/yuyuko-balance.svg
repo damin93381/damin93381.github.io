@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Purple and blue balance mark">
+  <defs>
+    <linearGradient id="violet" x1="34" y1="24" x2="142" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7764c7"/>
+      <stop offset="1" stop-color="#a88de5"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="164" y1="176" x2="58" y2="47" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69c9ee"/>
+      <stop offset="1" stop-color="#b9e8fa"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="82" fill="url(#sky)"/>
+  <path d="M100 18a82 82 0 0 0 0 164 41 41 0 0 0 0-82 41 41 0 0 1 0-82Z" fill="url(#violet)"/>
+  <circle cx="100" cy="59" r="15" fill="url(#sky)"/>
+  <circle cx="100" cy="141" r="15" fill="url(#violet)"/>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#fff" stroke-width="5"/>
+</svg>

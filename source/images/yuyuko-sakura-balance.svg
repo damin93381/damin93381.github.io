@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Purple and blue balance mark with cherry blossoms">
+  <defs>
+    <linearGradient id="violet" x1="34" y1="24" x2="142" y2="154" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7764c7"/>
+      <stop offset="1" stop-color="#a88de5"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="164" y1="176" x2="58" y2="47" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#69c9ee"/>
+      <stop offset="1" stop-color="#b9e8fa"/>
+    </linearGradient>
+    <path id="petal" d="M0-17C11-17 16-8 10 0C5 7-5 7-10 0C-16-8-11-17 0-17Z"/>
+  </defs>
+  <circle cx="100" cy="100" r="82" fill="url(#sky)"/>
+  <path d="M100 18a82 82 0 0 0 0 164 41 41 0 0 0 0-82 41 41 0 0 1 0-82Z" fill="url(#violet)"/>
+  <g transform="translate(100 59)" fill="#fff">
+    <use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/>
+    <circle r="7" fill="#8d73ce"/>
+  </g>
+  <g transform="translate(100 141)" fill="#fff">
+    <use href="#petal"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/>
+    <circle r="7" fill="#79d3ef"/>
+  </g>
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#fff" stroke-width="5"/>
+</svg>

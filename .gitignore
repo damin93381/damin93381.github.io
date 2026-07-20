@@ -7,3 +7,6 @@ public/
 .deploy*/
 _multiconfig.yml
 assets/yuyuko-local-preview-source/
+source/images/cursor/yuyuko-default.cur
+source/images/cursor/yuyuko-pointer.cur
+source/sponsor/wechat-payment.jpg
