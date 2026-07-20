@@ -20,6 +20,15 @@ assert.deepEqual(
   [6, 22, 38].map((offset) => favicon.readUInt8(offset)),
   [16, 32, 48],
 );
+for (const offset of [6, 22, 38]) {
+  const width = favicon.readUInt8(offset);
+  const height = favicon.readUInt8(offset + 1);
+  const size = favicon.readUInt32LE(offset + 8);
+  const frameOffset = favicon.readUInt32LE(offset + 12);
+  const metadata = await sharp(favicon.subarray(frameOffset, frameOffset + size)).metadata();
+  assert.equal(metadata.width, width, `favicon frame at ${offset} must match its directory width`);
+  assert.equal(metadata.height, height, `favicon frame at ${offset} must match its directory height`);
+}
 
 const expectedDimensions = new Map([
   ["source/images/yuyuko-banner.webp", [2560, 1200]],
