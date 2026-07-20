@@ -54,13 +54,38 @@ assert.ok(htmlFiles.length > 0, "Hexo must generate HTML output");
 
 const homepage = readFileSync("public/index.html", "utf8");
 const aboutPage = readFileSync("public/about/index.html", "utf8");
-assert.match(aboutPage, /sponsor-wrapper/, "About page must render the native sponsor section");
-assert.match(aboutPage, /\/sponsor\/wechat-payment\.jpg/, "About page must reference the local QR code");
+const sponsorQrPath = "/sponsor/wechat-payment.jpg";
+for (const path of ["source/sponsor/wechat-payment.jpg", "public/sponsor/wechat-payment.jpg"]) {
+  assert.ok(existsSync(path), `${path} must exist for the local preview`);
+  const { info } = await sharp(path)
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  assert.ok(info.width > 0 && info.height > 0, `${path} must decode as an image`);
+}
+
+assert.equal(
+  (aboutPage.match(/<div class="sponsor-wrapper">/g) ?? []).length,
+  1,
+  "About page must render exactly one native sponsor section",
+);
+assert.equal(
+  (aboutPage.match(/\/sponsor\/wechat-payment\.jpg/g) ?? []).length,
+  1,
+  "About page must reference the local QR code exactly once",
+);
+const sponsorIcons = [...aboutPage.matchAll(/<div class="([^"]*\bsponsor-icon\b[^"]*)"><\/div>/g)];
+assert.ok(sponsorIcons.length > 0, "About page must render the native sponsor icon");
+for (const sponsorIcon of sponsorIcons) {
+  assert.doesNotMatch(sponsorIcon[1], /\brotate\b/, "About sponsor icons must not rotate");
+}
+for (const path of htmlFiles.filter((path) => path !== "public/about/index.html")) {
+  const html = readFileSync(path, "utf8");
+  assert.doesNotMatch(html, /sponsor-wrapper/, `${path} must not render sponsorship`);
+  assert.ok(!html.includes(sponsorQrPath), `${path} must not reference the local QR code`);
+}
 for (const phrase of ["方法与阅读", "日常生活的片段", "长期兴趣沉淀为", "个人档案。"]) {
   assert.match(aboutPage, new RegExp(`<span style="white-space: nowrap;">${phrase}<\\/span>`), `${phrase} must not break on narrow screens`);
-}
-for (const path of ["public/index.html", "public/2026/07/20/welcome/index.html"]) {
-  assert.doesNotMatch(readFileSync(path, "utf8"), /sponsor-wrapper/, `${path} must not render sponsorship`);
 }
 for (const source of [
   "/avatar/yuyuko-avatar.webp",
@@ -129,6 +154,11 @@ assert.doesNotMatch(
 
 const style = readFileSync("public/css/style.css", "utf8");
 const themeConfig = readFileSync("_config.reimu.yml", "utf8");
+
+assert.ok(
+  style.includes('--sponsor-icon: url("../images/yuyuko-sakura-balance.svg");'),
+  "generated sponsor icon must use yuyuko-sakura-balance.svg",
+);
 
 assert.match(
   themeConfig,
