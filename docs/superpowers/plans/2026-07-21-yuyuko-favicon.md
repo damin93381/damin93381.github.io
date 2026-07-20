@@ -22,7 +22,7 @@
 ### Task 1: Generate and wire the local favicon
 
 **Files:**
-- Create: `scripts/build-yuyuko-favicon.mjs`
+- Create: `tools/build-yuyuko-favicon.mjs`
 - Create: `source/images/yuyuko-favicon.ico`
 - Modify: `_config.reimu.yml`
 - Modify: `docs/assets/yuyuko-local-preview-sources.md`
@@ -45,7 +45,7 @@ Expected: `PNG image data` and no staged Git change for the source image.
 
 - [ ] **Step 2: Add the favicon builder**
 
-Create `scripts/build-yuyuko-favicon.mjs` with this complete implementation:
+Create `tools/build-yuyuko-favicon.mjs` with this complete implementation. It must live outside Hexo's auto-loaded `scripts/` plugin directory.
 
 ```js
 import { mkdir, writeFile } from "node:fs/promises";
@@ -82,7 +82,7 @@ await writeFile(output, Buffer.concat([header, ...entries, ...images]));
 Run:
 
 ```bash
-PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH node scripts/build-yuyuko-favicon.mjs
+PATH=/home/drm/.local/opt/node-v22.23.1/bin:$PATH node tools/build-yuyuko-favicon.mjs
 file source/images/yuyuko-favicon.ico
 ```
 
@@ -121,7 +121,7 @@ Add this row to `docs/assets/yuyuko-local-preview-sources.md`:
 Add this package script:
 
 ```json
-"build:yuyuko-favicon": "node scripts/build-yuyuko-favicon.mjs"
+"build:yuyuko-favicon": "node tools/build-yuyuko-favicon.mjs"
 ```
 
 - [ ] **Step 2: Extend the verifier before running the full suite**
@@ -164,7 +164,7 @@ Expected: the local page references the new favicon, no workflow directory exist
 - [ ] **Step 5: Commit the cohesive implementation**
 
 ```bash
-git add _config.reimu.yml package.json scripts/build-yuyuko-favicon.mjs \
+git add _config.reimu.yml package.json tools/build-yuyuko-favicon.mjs \
   source/images/yuyuko-favicon.ico test/verify-yuyuko-local-preview-assets.mjs \
   docs/assets/yuyuko-local-preview-sources.md
 git commit -m "feat: add local Yuyuko favicon"
