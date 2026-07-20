@@ -53,6 +53,15 @@ const htmlFiles = readdirSync("public", { recursive: true })
 assert.ok(htmlFiles.length > 0, "Hexo must generate HTML output");
 
 const homepage = readFileSync("public/index.html", "utf8");
+const aboutPage = readFileSync("public/about/index.html", "utf8");
+assert.match(aboutPage, /sponsor-wrapper/, "About page must render the native sponsor section");
+assert.match(aboutPage, /\/sponsor\/wechat-payment\.jpg/, "About page must reference the local QR code");
+for (const phrase of ["方法与阅读", "日常生活的片段", "长期兴趣沉淀为", "个人档案。"]) {
+  assert.match(aboutPage, new RegExp(`<span style="white-space: nowrap;">${phrase}<\\/span>`), `${phrase} must not break on narrow screens`);
+}
+for (const path of ["public/index.html", "public/2026/07/20/welcome/index.html"]) {
+  assert.doesNotMatch(readFileSync(path, "utf8"), /sponsor-wrapper/, `${path} must not render sponsorship`);
+}
 for (const source of [
   "/avatar/yuyuko-avatar.webp",
   "/covers/yuyuko-cover.webp",

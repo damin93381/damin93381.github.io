@@ -578,19 +578,13 @@ sponsor:
   enable: false
   tip:
     zh-CN: 请作者喝杯咖啡吧
-    zh-TW: 請作者喝杯咖啡吧
-    en: Buy me a coffee
-    ja: コーヒーを買ってください
-    pt-BR: Compre-me um café
   icon:
-    url: "../images/taichi.png" # this path is relative to the css/style.css, so it needs to go up one level to reach the images folder
-    rotate: true
-    mask: true # whether to use the images as a mask
+    url: "../images/yuyuko-sakura-balance.svg"
+    rotate: false
+    mask: false
   qr:
-    # - name: 支付宝
-    #   src: "/sponsor/alipay.jpg"
-    # - name: 微信
-    #   src: "/sponsor/wechat.png"
+    - name: 微信支付
+      src: /sponsor/wechat-payment.jpg
 
 # ICP 备案
 icp:
