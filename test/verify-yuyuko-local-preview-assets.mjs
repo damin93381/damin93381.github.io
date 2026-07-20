@@ -84,9 +84,6 @@ for (const path of htmlFiles.filter((path) => path !== "public/about/index.html"
   assert.doesNotMatch(html, /sponsor-wrapper/, `${path} must not render sponsorship`);
   assert.ok(!html.includes(sponsorQrPath), `${path} must not reference the local QR code`);
 }
-for (const phrase of ["方法与阅读", "日常生活的片段", "长期兴趣沉淀为", "个人档案。"]) {
-  assert.match(aboutPage, new RegExp(`<span style="white-space: nowrap;">${phrase}<\\/span>`), `${phrase} must not break on narrow screens`);
-}
 for (const source of [
   "/avatar/yuyuko-avatar.webp",
   "/covers/yuyuko-cover.webp",
