@@ -12,6 +12,15 @@ for (const filename of [
 ]) assert.match(manifest, new RegExp(filename));
 assert.match(manifest, /公开发布前需取得许可或替换/);
 
+const favicon = readFileSync("source/images/yuyuko-favicon.ico");
+assert.equal(favicon.readUInt16LE(0), 0);
+assert.equal(favicon.readUInt16LE(2), 1);
+assert.equal(favicon.readUInt16LE(4), 3);
+assert.deepEqual(
+  [6, 22, 38].map((offset) => favicon.readUInt8(offset)),
+  [16, 32, 48],
+);
+
 const expectedDimensions = new Map([
   ["source/images/yuyuko-banner.webp", [2560, 1200]],
   ["source/images/yuyuko-banner-mobile.webp", [1440, 1080]],
@@ -71,8 +80,18 @@ for (const [media, source] of [
 }
 
 for (const path of htmlFiles) {
+  const html = readFileSync(path, "utf8");
+  assert.ok(
+    html.includes("/images/yuyuko-favicon.ico"),
+    `${path} must reference the local Yuyuko favicon`,
+  );
   assert.doesNotMatch(
-    readFileSync(path, "utf8"),
+    html,
+    /\/images\/favicon\.ico/,
+    `${path} must not reference Reimu's default favicon`,
+  );
+  assert.doesNotMatch(
+    html,
     /\/images\/banner\.webp/,
     `${path} must not reference Reimu's default banner`,
   );
