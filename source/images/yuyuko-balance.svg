@@ -11,7 +11,7 @@
   </defs>
   <circle cx="100" cy="100" r="82" fill="url(#sky)"/>
   <path d="M100 18a82 82 0 0 0 0 164 41 41 0 0 0 0-82 41 41 0 0 1 0-82Z" fill="url(#violet)"/>
-  <circle cx="100" cy="59" r="15" fill="url(#sky)"/>
-  <circle cx="100" cy="141" r="15" fill="url(#violet)"/>
+  <circle cx="100" cy="59" r="15" fill="url(#violet)"/>
+  <circle cx="100" cy="141" r="15" fill="url(#sky)"/>
   <circle cx="100" cy="100" r="82" fill="none" stroke="#fff" stroke-width="5"/>
 </svg>

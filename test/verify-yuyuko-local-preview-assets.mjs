@@ -1,5 +1,5 @@
 import { execFileSync } from "node:child_process";
-import { readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import assert from "node:assert/strict";
 import sharp from "sharp";
 
@@ -119,11 +119,61 @@ assert.doesNotMatch(
 );
 
 const style = readFileSync("public/css/style.css", "utf8");
-for (const path of [
-  "../images/yuyuko-balance.svg",
-  "../images/yuyuko-sakura-balance.svg",
-  "../images/cursor/yuyuko-default.cur",
-  "../images/cursor/yuyuko-pointer.cur",
+const themeConfig = readFileSync("_config.reimu.yml", "utf8");
+
+assert.match(
+  themeConfig,
+  /footer:\n(?:[^\n]*\n)*?  icon:\n    url: "\.\.\/images\/yuyuko-sakura-balance\.svg"[^\n]*\n    rotate: true\n    mask: false/,
+  "footer must use the unmasked rotating sakura balance icon",
+);
+assert.match(
+  themeConfig,
+  /top:\n(?:[^\n]*\n)*?  icon:\n    url: "\.\.\/images\/yuyuko-balance\.svg"[^\n]*\n    rotate: true\n    mask: false/,
+  "top control must use the unmasked rotating balance icon",
+);
+assert.match(
+  themeConfig,
+  /reimu_cursor:\n  enable: true\n  cursor:\n    default: \.\.\/images\/cursor\/yuyuko-default\.cur[^\n]*\n    pointer: \.\.\/images\/cursor\/yuyuko-pointer\.cur\n    text: \.\.\/images\/cursor\/yuyuko-default\.cur/,
+  "cursor roles must use the intended local cursor files",
+);
+
+for (const [mapping, expected] of [
+  ["--cursor-default", 'url("../images/cursor/yuyuko-default.cur"), auto'],
+  ["--cursor-pointer", 'url("../images/cursor/yuyuko-pointer.cur"), pointer'],
+  ["--cursor-text", 'url("../images/cursor/yuyuko-default.cur"), text'],
+  ["--footer-icon", 'url("../images/yuyuko-sakura-balance.svg")'],
+  ["--top-icon", 'url("../images/yuyuko-balance.svg")'],
 ]) {
-  assert.ok(style.includes(path), `generated CSS must reference ${path}`);
+  assert.ok(
+    style.includes(`${mapping}: ${expected};`),
+    `generated CSS must map ${mapping} to ${expected}`,
+  );
 }
+assert.match(style, /\.footer-info-sep\.rotate \{\n  animation: rotate-all 3s linear infinite;\n\}/);
+assert.match(style, /\.footer-info-sep \{\n  background: var\(--footer-icon\) no-repeat center\/80%;\n\}/);
+assert.match(style, /\.sidebar-top \.sidebar-top-taichi\.rotate \{\n  animation: rotate-all 3s linear infinite;\n\}/);
+assert.match(style, /\.sidebar-top-taichi \{\n  background: var\(--top-icon\) no-repeat center\/100%;\n\}/);
+
+assert.match(
+  homepage,
+  /<div class="loading-taichi rotate">\s*<img src="\/images\/yuyuko-balance\.svg" alt="loading" \/>/,
+  "generated preloader must use the balance SVG",
+);
+
+for (const filename of ["yuyuko-balance.svg", "yuyuko-sakura-balance.svg"]) {
+  const sourcePath = `source/images/${filename}`;
+  const sourceSvg = readFileSync(sourcePath, "utf8");
+  const outputPath = `public/images/${filename}`;
+  assert.ok(existsSync(outputPath), `generated ${filename} must exist`);
+  assert.equal(readFileSync(outputPath, "utf8"), sourceSvg, `generated ${filename} must match its source`);
+  assert.match(sourceSvg, /viewBox="0 0 200 200" width="200" height="200"/);
+  assert.match(sourceSvg, /#7764c7/);
+  assert.match(sourceSvg, /#a88de5/);
+  assert.match(sourceSvg, /#69c9ee/);
+  assert.match(sourceSvg, /#b9e8fa/);
+  assert.match(sourceSvg, /stroke="#fff" stroke-width="5"/);
+}
+
+const balanceSvg = readFileSync("source/images/yuyuko-balance.svg", "utf8");
+assert.match(balanceSvg, /<circle cx="100" cy="59" r="15" fill="url\(#violet\)"\/>/);
+assert.match(balanceSvg, /<circle cx="100" cy="141" r="15" fill="url\(#sky\)"\/>/);
