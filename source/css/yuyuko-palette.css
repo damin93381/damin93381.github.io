@@ -1,0 +1,32 @@
+/*
+ * Yuyuko palette: research blue + Yuyuko violet.
+ * Loaded after the Reimu stylesheet so the semantic tokens win in both modes.
+ */
+:root {
+  --color-link: #1d4ed8;
+  --color-border: #c6d7f5;
+  --color-background: #eef3ff;
+  --color-code-background: #f4f5ff;
+  --color-h2-border: #e5e7f8;
+  --color-h2-after: #7c3aed;
+  --color-meta-shadow: rgba(124, 58, 237, 0.28);
+}
+
+[data-theme='dark']:root {
+  --red-1: #8b82ff;
+  --red-2: #a59dff;
+  --red-3: #c3bfff;
+  --color-link: #8db4ff;
+  --color-border: #3d4c76;
+  --color-background: #151b2e;
+  --color-code-background: #1f2740;
+  --color-header-background: #171d31;
+  --color-footer-background: #151b2e;
+  --color-mobile-nav-background: #151b2e;
+  --color-wrap: #1b2340;
+  --color-sticky: #1b2340;
+  --color-h2-border: #313a5b;
+  --color-h2-after: #b7a8ff;
+  --color-default: #d7daee;
+  --color-archive-year: #aab3d6;
+}

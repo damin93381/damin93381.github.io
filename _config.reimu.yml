@@ -634,7 +634,7 @@ share:
 # a very simple alternative for https://hexo.io/api/injector
 injector:
   head_begin: # Inject code snippet right after <head>
-  head_end: '<link rel="stylesheet" href="/css/social-icons.css">' # Inject code snippet right before </head>
+  head_end: '<link rel="stylesheet" href="/css/social-icons.css"><link rel="stylesheet" href="/css/yuyuko-palette.css">' # Inject code snippet right before </head>
   body_begin: # Inject code snippet right after <body>
   body_end: # Inject code snippet right before </body>
   sidebar_begin: # Inject code snippet right after <aside>
@@ -725,16 +725,17 @@ material_theme:
 
 internal_theme:
   light:
-    --red-0: "#ff0000"
-    --red-1: "#ff5252"
-    --red-2: "#ff7c7c"
-    --red-3: "#ffafaf"
-    --red-4: "#ffd0d0"
-    --red-5: "#ffecec"
-    --red-5-5: "#fff3f3"
-    --red-6: "#fff7f7"
-    --color-red-6-shadow: "rgba(255, 78, 78, 0.6)"
-    --color-red-3-shadow: "rgba(255, 78, 78, 0.3)"
+    # Research blue (#2563eb) + Yuyuko violet (#7c3aed)
+    --red-0: "#4338ca"
+    --red-1: "#5b4fe0"
+    --red-2: "#7c6ee8"
+    --red-3: "#aaa1f0"
+    --red-4: "#cec9f7"
+    --red-5: "#e9e7fc"
+    --red-5-5: "#f3f4ff"
+    --red-6: "#f8faff"
+    --color-red-6-shadow: "rgba(91, 79, 224, 0.48)"
+    --color-red-3-shadow: "rgba(91, 79, 224, 0.24)"
 
     --highlight-nav: "#f5f5f5"
     --highlight-scrollbar: "#d6d6d6"
@@ -754,10 +755,10 @@ internal_theme:
     --highlight-addition: "#22863a"
     --highlight-addition-bg: "#f0fff4"
   dark:
-    --red-4: "rgba(255, 208, 208, 0.5)"
-    --red-5: "rgba(255,228,228,0.15)"
-    --red-5-5: "rgba(255,236,236,0.05)"
-    --red-6: "rgba(255, 243, 243, 0.2)"
+    --red-4: "rgba(139, 130, 255, 0.5)"
+    --red-5: "rgba(124, 58, 237, 0.18)"
+    --red-5-5: "rgba(91, 79, 224, 0.12)"
+    --red-6: "rgba(37, 99, 235, 0.16)"
 
     --highlight-nav: "#222830"
     --highlight-scrollbar: "#454d59"
