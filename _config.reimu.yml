@@ -107,7 +107,7 @@ sidebar:
     show_common: true # whether to show common sidebar, ignored on mobile devices
 
 social:
-  # email: mailto:xxx@gmail.com
+  email: dongrm2024@lzu.edu.cn
   github: https://github.com/damin93381
   # google: https://plus.google.com/yourname
   # twitter: https://twitter.com/yourname
@@ -121,7 +121,7 @@ social:
   # flickr: https://www.flickr.com/photos/yourname
   # dribbble: https://dribbble.com/yourname
   # behance: https://www.behance.net/yourname
-  # bilibili: https://space.bilibili.com/yourname
+  bilibili: https://space.bilibili.com/39538868
   # weibo: https://weibo.com/yourname
   # zhihu: https://www.zhihu.com/people/yourname
   # reddit: https://www.reddit.com/user/yourname
