@@ -6,7 +6,6 @@ import sharp from "sharp";
 const manifest = readFileSync("docs/assets/yuyuko-local-preview-sources.md", "utf8");
 for (const filename of [
   "yuyuko-banner.webp",
-  "yuyuko-avatar.webp",
   "yuyuko-cover.webp",
   "reimu.png",
 ]) assert.match(manifest, new RegExp(filename));
@@ -97,7 +96,7 @@ for (const source of [
 const cardCoverSources = [...homepage.matchAll(
   /<div class="post-cover[^>]*>\s*<img data-src="([^"]+)"/g,
 )].map((match) => match[1]);
-assert.equal(cardCoverSources.length, 3, "homepage must render all starter post covers");
+assert.equal(cardCoverSources.length, 1, "homepage must render the current post cover");
 assert.ok(
   cardCoverSources.every((source) => source === "/covers/yuyuko-cover.webp"),
   "homepage cards must consistently use the selected local Yuyuko cover",

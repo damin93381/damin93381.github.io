@@ -2,11 +2,31 @@
 Thumbs.db
 db.json
 *.log
+.debug-journal.md
 node_modules/
 public/
 .deploy*/
 _multiconfig.yml
+
+# Local Hexo and test output
+.hexo/
+.cache/
+coverage/
+.nyc_output/
+
+# Local environment and editor state
+.env
+.env.*
+!.env.example
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local-only visual assets and development records
 assets/yuyuko-local-preview-source/
-source/images/cursor/yuyuko-default.cur
-source/images/cursor/yuyuko-pointer.cur
-source/sponsor/wechat-payment.jpg
+source/images/cursor/
+source/sponsor/
+.omo/
+.playwright-mcp/
+.superpowers/

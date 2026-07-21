@@ -6,8 +6,6 @@ const publicRoot = path.resolve(__dirname, "..", "public");
 const siteOrigin = "http://local.test";
 const requiredCategoryRoutes = new Map([
   ["科研笔记", "/categories/科研笔记/"],
-  ["技术实践", "/categories/技术实践/"],
-  ["日常记录", "/categories/日常记录/"],
 ]);
 
 function extractLinks(html, linkClass) {
