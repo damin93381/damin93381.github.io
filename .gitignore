@@ -26,7 +26,6 @@ coverage/
 # Local-only visual assets and development records
 assets/yuyuko-local-preview-source/
 source/images/cursor/
-source/sponsor/
 .omo/
 .playwright-mcp/
 .superpowers/
