@@ -89,7 +89,7 @@ copyright: # Inject code snippet right in the footer copyright
 #   All website licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a></div>
 
 footer:
-  since: 2020 # 2020-current year
+  since: 2026 # 2020-current year
   powered: true
   count: true # show word count and reading time
   busuanzi: true
@@ -101,13 +101,13 @@ footer:
 # Sidebar
 # sidebar: right # deprecated, use sidebar.position instead
 sidebar:
-  position: right
+  position: left
   menu: true  # whether to show the sidebar menu button, ignored on mobile devices
   article:
     show_common: true # whether to show common sidebar, ignored on mobile devices
 
 social:
-  email: dongrm2024@lzu.edu.cn
+  # email: dongrm2024@lzu.edu.cn
   github: https://github.com/damin93381
   # google: https://plus.google.com/yourname
   # twitter: https://twitter.com/yourname
