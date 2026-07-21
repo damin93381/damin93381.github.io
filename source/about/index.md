@@ -4,4 +4,12 @@ date: 2026-07-20 00:00:00
 sponsor: true
 ---
 
-希望把零散的想法、<span style="white-space: nowrap;">计算过程和长期兴趣</span>沉淀为可回顾、<span style="white-space: nowrap;">可复用的个人档案</span>。
+自2023年开始参与计算模拟的研究工作以来，我努力学习，经过了一定的科研训练，做了一些简单的工作。对计算模拟与仿真，也有了自己的心得体会。
+
+另一方面，在这过程中，我意识到自己对于ai工具的过度依赖，我感觉已经造成了自身表达能力与认知能力的严重下降。我意识到作为一个全面的人，独立的表达能力与总结能力是断不可完全交予ai的。
+
+为重新建立与训练我的相关能力，也为秉持开源精神，将我在已有工作中的一些技术展示出来，我建立此博客。
+
+未来，我会提出我对计算化学入门的一些看法，介绍并简要展示我在一些文章中的计算流程，目前主流实验-计算结合文章中，计算方法可能存在的缺陷的思考。
+
+本博客基于[D-Sketon]([github.com/D-Sketon](https://github.com/D-Sketon))制作的[灵梦主题]([github.com/D-Sketon/reimu-template](https://github.com/D-Sketon/reimu-template))构建，非常漂亮的模板，我在他工作的基础上改了自用的幽幽子主题，使用的图片和指针[查看图片与指针的作者声明](https://github.com/damin93381/damin93381.github.io/blob/main/picture-quote.md)
