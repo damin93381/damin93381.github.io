@@ -136,7 +136,7 @@ social:
   # weixin:
   # qq:
   # tiktok:
-
+  orcid: https://orcid.org/0009-0003-0473-1820
 widgets:
   # - category
   # - tag
@@ -634,7 +634,7 @@ share:
 # a very simple alternative for https://hexo.io/api/injector
 injector:
   head_begin: # Inject code snippet right after <head>
-  head_end: # Inject code snippet right before </head>
+  head_end: '<link rel="stylesheet" href="/css/social-icons.css">' # Inject code snippet right before </head>
   body_begin: # Inject code snippet right after <body>
   body_end: # Inject code snippet right before </body>
   sidebar_begin: # Inject code snippet right after <aside>
